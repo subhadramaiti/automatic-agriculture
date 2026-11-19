@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>AgriWater – The New Era of Agriculture</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+ <main class="phone">
+  <section class="hero">
+   <div class="row"><div><h1>Hello, <b>Farmers</b></h1><small id="date"></small></div><button class="iconbtn" id="refresh" aria-label="Randomize weather">⟳</button></div>
+   <label class="search"><span>🔍</span><input id="q" placeholder="Search crop here…" aria-label="Search crop"></label>
+  </section>
+
+  <section class="wcard">
+   <div class="row"><select id="loc" aria-label="Location"></select><span class="temp" id="tNow">+16°C</span></div>
+   <div class="stats">
+    <div>🌡️<b id="sT">22 °C</b>Temp</div><div>💧<b id="sH">59%</b>Humidity</div>
+    <div>🌬️<b id="sW">6 m/s</b>Wind</div><div>🌧️<b id="sR">0 mm</b>Rain</div>
+   </div>
+   <div class="sl">Temperature<input type="range" id="temp" min="0" max="45" value="22"><output id="oT"></output></div>
+   <div class="sl">Humidity<input type="range" id="hum" min="10" max="100" value="59"><output id="oH"></output></div>
+   <div class="sl">Wind<input type="range" id="wind" min="0" max="20" value="6"><output id="oW"></output></div>
+   <div class="sl">Rain<input type="range" id="rain" min="0" max="30" value="0"><output id="oR"></output></div>
+  </section>
+
+  <h2>Commodities and Food</h2>
+  <div class="crops" id="crops"></div>
+
+  <h2>My Fields</h2>
+  <div class="fields" id="fields"></div>
+
+  <nav class="nav" aria-label="Main">
+   <button class="on" data-go="top" aria-label="Home">🏠</button><button data-go="wcard" aria-label="Weather">☁️</button>
+   <button data-go="crops" aria-label="Crops">💬</button><button data-go="fields" aria-label="Fields">👤</button>
+  </nav>
+ </main>
+
+ <aside class="side" id="result">
+  <div class="panel" id="panel"><div class="empty">👆 Tap a crop (Rice, Corn, Grapes, Potato, Olive, Tomato…) to see how much water it needs for today’s weather.</div></div>
+  <div class="panel" id="pump" style="margin-top:20px">
+   <div class="row"><h3 style="font-size:1.2rem">🚰 Pump Control</h3><span class="led" id="led">PUMP OFF</span></div>
+   <div class="btns" style="margin-top:10px"><button class="use tab on" id="tabM">✋ Manual</button><button class="use tab" id="tabA">🤖 Auto (AI)</button></div>
+   <div class="ctl" style="margin-top:12px">
+    <label>Mode<select id="mode"><option value="sim">Simulation (demo ×60 speed)</option><option value="esp">Real pump – ESP32</option></select></label>
+    <label id="tgtLbl">Target litres<input type="number" id="tgt" min="1" step="10" placeholder="pick a crop"></label>
+    <label>Pump flow (L/min)<input type="number" id="rate" min="1" value="600"></label>
+    <label>ESP32 IP address<input type="text" id="ip" value="192.168.1.50"></label>
+   </div>
+   <button class="use" id="use">Use today’s water need as target</button>
+   <div class="bar"><i id="bar"></i></div><div class="sub" id="got">0 / 0 L</div>
+   <div class="btns"><button id="go">▶ Start pump</button><button id="halt" disabled>■ Stop</button></div>
+   <div id="autoBox" hidden>
+    <div class="ctl" style="margin-top:12px"><label>Daily start time<input type="time" id="atime" value="06:00"></label><label>Crop &amp; field size come from the plan above</label></div>
+    <div class="tip" id="plan">Tap a crop to see the AI plan.</div>
+    <button class="use" id="autoBtn" style="background:var(--g);color:#fff;padding:14px;font-size:1rem">🤖 Enable Auto – one click</button>
+    <div class="sub" style="margin-top:8px">Real pump: the ESP32 saves the settings, then checks the weather itself every day over its own Wi-Fi – no phone or Bluetooth needed.</div>
+   </div>
+   <div id="plog">Ready. The pump switches off automatically when the target litres are delivered.</div>
+  </div>
+ </aside>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
