@@ -5,7 +5,7 @@
 - esp32_firmware/     -> pump_controller/pump_controller.ino (upload with Arduino IDE)
 
 ## Use the website (no hardware)
-1. Open the deployed site or website/index.html.
+1. Open the [deployed site](https://subhadramaiti.github.io/automatic-agriculture/) or website/index.html.
 2. Tap a crop (Rice, Corn, Grapes, Potato, Olive, Tomato...) -> see water needed for the weather.
 3. Pump Control -> Manual: set litres, Start. Pump stops automatically at the target.
 4. Pump Control -> Auto (AI): one click. Weather is analysed and the plan is run automatically.
